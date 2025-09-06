@@ -92,8 +92,8 @@ const Footer = () => {
               animationDuration: `${2 + Math.random() * 2}s`
             }}
           />
-        ))}
-      </div>
+              ))}
+            </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header Section */}
@@ -148,13 +148,13 @@ const Footer = () => {
                     {event.name}
                     <svg className="w-3 h-3 sm:w-4 sm:h-4 ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
+                </svg>
                   </a>
                 </li>
               ))}
             </ul>
-          </div>
-
+              </div>
+              
           {/* Column 3 - Contact Information */}
           <div ref={el => sectionRefs.current[2] = el} className="relative sm:col-span-2 lg:col-span-1">
             <h3 className="text-[#d4af37] text-base sm:text-lg font-semibold mb-4 sm:mb-6 tracking-wider uppercase">Contact</h3>
@@ -162,7 +162,7 @@ const Footer = () => {
               <div className="group flex items-center space-x-3 sm:space-x-4 p-3 sm:p-4 bg-white/5 hover:bg-white/10 rounded-lg transition-all duration-300">
                 <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-[#d4af37] to-[#b8941f] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
                   <svg className="w-4 h-4 sm:w-5 sm:h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
                 </div>
                 <div className="min-w-0 flex-1">
@@ -174,7 +174,7 @@ const Footer = () => {
               <div className="group flex items-center space-x-3 sm:space-x-4 p-3 sm:p-4 bg-white/5 hover:bg-white/10 rounded-lg transition-all duration-300">
                 <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-[#d4af37] to-[#b8941f] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
                   <svg className="w-4 h-4 sm:w-5 sm:h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
                 </div>
                 <div className="min-w-0 flex-1">
@@ -192,10 +192,10 @@ const Footer = () => {
                 <div className="min-w-0 flex-1">
                   <p className="text-white/60 text-xs uppercase tracking-wider">Address</p>
                   <p className="text-white font-medium text-xs sm:text-sm">7179 FOOTHILL BLVD, TUJUNGA, CA 91042</p>
-                </div>
               </div>
             </div>
           </div>
+        </div>
 
           {/* Column 4 - Social Media Links */}
           <div ref={el => sectionRefs.current[3] = el} className="sm:col-span-2 lg:col-span-1">

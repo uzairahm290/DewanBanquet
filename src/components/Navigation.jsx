@@ -345,7 +345,7 @@ const Navigation = () => {
                     </div>
                     <div>
                       <p className="text-[#d4af37] text-sm font-medium">Phone</p>
-                      <p className="text-white text-base">(818) 352-7748</p>
+                      <p className="text-white text-base">(+92) 352-7748</p>
                     </div>
                   </div>
                   
@@ -461,8 +461,8 @@ const Navigation = () => {
                       <p className="text-[#d4af37] text-xs font-medium">Location</p>
                       <p className="text-white text-sm">Tujunga, CA</p>
                     </div>
-                  </div>
-                  
+          </div>
+
                   <div className="flex items-center space-x-3 text-white/80">
                     <div className="w-8 h-8 bg-[#d4af37]/20 border border-[#d4af37]/30 rounded-lg flex items-center justify-center">
                       <svg className="w-4 h-4 text-[#d4af37]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -496,8 +496,8 @@ const Navigation = () => {
                 </div>
               </div>
             </div>
-          </div>
         </div>
+      </div>
       )}
     </>
   )

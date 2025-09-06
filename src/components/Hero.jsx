@@ -27,9 +27,9 @@ const Hero = ({ shouldAnimate = true }) => {
       },
       { 
         scaleX: 1, 
-        opacity: 1, 
+        opacity: 1,
         duration: 3.0, 
-        ease: "power3.out" 
+        ease: "power3.out"
       },
       0
     )
@@ -175,8 +175,8 @@ const Hero = ({ shouldAnimate = true }) => {
             </h2>
             
             {/* Main Heading */}
-            <h1 
-              ref={headingRef}
+        <h1 
+          ref={headingRef}
               className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-9xl font-bold tracking-tight"
               style={{ 
                 fontFamily: 'Playfair Display, serif',
@@ -186,8 +186,8 @@ const Hero = ({ shouldAnimate = true }) => {
               }}
             >
               DEWAN
-            </h1>
-            
+        </h1>
+        
             {/* Subtitle */}
             <h3 
               ref={subtitleRef}
@@ -195,7 +195,7 @@ const Hero = ({ shouldAnimate = true }) => {
             >
               BANQUET HALL
             </h3>
-          </div>
+      </div>
 
           {/* Right Border Line */}
           <div className="right-line absolute top-0 right-0 bottom-0 w-0.5 bg-[#d4af37] origin-top opacity-0"></div>
