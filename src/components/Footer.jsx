@@ -121,18 +121,18 @@ const Footer = () => {
                 <h3 className="text-[#d4af37] text-sm font-semibold mb-3 tracking-wider uppercase text-left">Navigation</h3>
                 <ul className="space-y-2">
                   {navigationLinks.map((link, index) => (
-                    <li key={link.name}>
-                      <a
-                        href={link.href}
+                <li key={link.name}>
+                  <a
+                    href={link.href}
                         className="group flex items-center text-white/80 hover:text-[#d4af37] transition-all duration-300 text-xs font-medium uppercase tracking-wide"
-                      >
+                  >
                         <div className="w-1.5 h-1.5 bg-[#d4af37] rounded-full mr-2 group-hover:scale-125 transition-transform duration-300"></div>
-                        {link.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
               {/* Events Column */}
               <div ref={el => sectionRefs.current[1] = el} className="flex flex-col">

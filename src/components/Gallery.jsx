@@ -4,22 +4,12 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Link } from 'react-router-dom'
 
 // Import local images
-import img1 from '../assets/Images/IMG-20250905-WA0000.jpg'
-import img2 from '../assets/Images/IMG-20250905-WA0001.jpg'
-import img3 from '../assets/Images/IMG-20250905-WA0002.jpg'
-import img4 from '../assets/Images/IMG-20250905-WA0003.jpg'
-import img5 from '../assets/Images/IMG-20250905-WA0004.jpg'
-import img6 from '../assets/Images/IMG-20250905-WA0005.jpg'
-import img7 from '../assets/Images/IMG-20250905-WA0006.jpg'
-import img8 from '../assets/Images/IMG-20250905-WA0008.jpg'
-import img9 from '../assets/Images/IMG-20250905-WA0009.jpg'
-import img10 from '../assets/Images/IMG-20250905-WA0010.jpg'
-import img11 from '../assets/Images/IMG-20250905-WA0011.jpg'
-import img12 from '../assets/Images/IMG-20250905-WA0012.jpg'
-import img13 from '../assets/Images/IMG-20250905-WA0013.jpg'
-import img14 from '../assets/Images/IMG-20250905-WA0014.jpg'
-import img15 from '../assets/Images/IMG-20250905-WA0015.jpg'
-import img16 from '../assets/Images/IMG-20250905-WA0016.jpg'
+import img1 from '../assets/Images/interior1.jpg'
+import img2 from '../assets/Images/interior2.jpg'
+import img3 from '../assets/Images/interior3.jpg'
+import img4 from '../assets/Images/wedding1.png'
+import img5 from '../assets/Images/wedding2.png'
+import img6 from '../assets/Images/interior4.jpg'
 
 const Gallery = () => {
   const sectionRef = useRef(null)
@@ -33,78 +23,28 @@ const Gallery = () => {
     },
     {
       src: img2,
-      alt: "Elegant Wedding Setup",
-      category: "Wedding"
-    },
-    {
-      src: img3,
-      alt: "Corporate Event Space",
-      category: "Corporate"
-    },
-    {
-      src: img4,
-      alt: "Private Party Venue",
-      category: "Private"
-    },
-    {
-      src: img5,
-      alt: "Special Occasion Hall",
-      category: "Special"
-    },
-    {
-      src: img6,
-      alt: "Celebration Setup",
-      category: "Celebration"
-    },
-    {
-      src: img7,
-      alt: "Elegant Dining Area",
-      category: "Dining"
-    },
-    {
-      src: img8,
-      alt: "Luxury Banquet Hall",
-      category: "Luxury"
-    },
-    {
-      src: img9,
-      alt: "Beautiful Event Space",
-      category: "Events"
-    },
-    {
-      src: img10,
-      alt: "Grand Hall Interior",
+      alt: "Elegant Venue Space",
       category: "Interior"
     },
     {
-      src: img11,
-      alt: "Wedding Reception Setup",
+      src: img3,
+      alt: "Luxury Banquet Hall",
+      category: "Interior"
+    },
+    {
+      src: img4,
+      alt: "Beautiful Wedding Ceremony",
       category: "Wedding"
     },
     {
-      src: img12,
-      alt: "Corporate Meeting Space",
-      category: "Corporate"
+      src: img5,
+      alt: "Elegant Wedding Reception",
+      category: "Wedding"
     },
     {
-      src: img13,
-      alt: "Private Celebration",
-      category: "Private"
-    },
-    {
-      src: img14,
-      alt: "Special Event Hall",
-      category: "Special"
-    },
-    {
-      src: img15,
-      alt: "Festive Celebration",
-      category: "Celebration"
-    },
-    {
-      src: img16,
-      alt: "Fine Dining Experience",
-      category: "Dining"
+      src: img6,
+      alt: "Grand Hall Interior",
+      category: "Interior"
     }
   ]
 
