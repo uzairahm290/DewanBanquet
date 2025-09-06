@@ -49,7 +49,7 @@ const Footer = () => {
     { name: 'VENUE', href: '#venue' },
     { name: 'MENU', href: '#menu' },
     { name: 'EVENTS', href: '#events' },
-    { name: 'GALLERY', href: '#gallery' },
+    { name: 'GALLERY', href: '/gallery' },
     { name: 'ABOUT US', href: '#about' },
     { name: 'CONTACT', href: '#contact' }
   ]

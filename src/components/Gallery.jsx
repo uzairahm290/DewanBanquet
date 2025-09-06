@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { Link } from 'react-router-dom'
 
 // Import local images
 import img1 from '../assets/Images/IMG-20250905-WA0000.jpg'
@@ -203,9 +204,12 @@ const Gallery = () => {
 
         {/* View More Button */}
         <div className="text-center mt-12">
-          <button className="bg-[#d4af37] text-white px-8 py-3 rounded-full hover:bg-[#b8941f] transition-colors duration-300 font-semibold">
+          <Link
+            to="/gallery"
+            className="inline-block bg-[#d4af37] text-white px-8 py-3 rounded-full hover:bg-[#b8941f] transition-colors duration-300 font-semibold"
+          >
             View Full Gallery
-          </button>
+          </Link>
         </div>
       </div>
     </section>

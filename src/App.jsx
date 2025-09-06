@@ -14,6 +14,7 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ErrorPage from './components/ErrorPage'
 import HomePage from './components/HomePage'
+import GalleryPage from './components/GalleryPage'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -58,6 +59,7 @@ function App() {
       {isLoading && <Preloader onComplete={handlePreloaderComplete} />}
       <Routes>
         <Route path="/" element={<HomePage shouldAnimate={!isLoading} />} />
+        <Route path="/gallery" element={<GalleryPage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </Router>
