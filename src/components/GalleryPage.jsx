@@ -22,6 +22,8 @@ import IMG14 from '../assets/Images/wedding2.png'
 import IMG15 from '../assets/Images/wedding3.png'
 import IMG16 from '../assets/Images/wedding4.png'
 import IMG17 from '../assets/Images/wedding5.png'
+import IMG18 from '../assets/Images/coporate1.png'
+
 
 
 const GalleryPage = () => {
@@ -47,7 +49,8 @@ const GalleryPage = () => {
     { id: 14, src: IMG14, alt: 'Elegant Wedding Reception', category: 'wedding' },
     { id: 15, src: IMG15, alt: 'Romantic Wedding Setup', category: 'wedding' },
     { id: 16, src: IMG16, alt: 'Luxury Wedding Celebration', category: 'wedding' },
-    { id: 17, src: IMG17, alt: 'Luxury Mehndi Celebration', category: 'wedding' }
+    { id: 17, src: IMG17, alt: 'Luxury Mehndi Celebration', category: 'wedding' },
+    { id: 18, src: IMG18, alt: 'Coporate Event', category: 'corporate' }
 
   ]
 
