@@ -113,8 +113,49 @@ const Footer = () => {
 
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-12 mb-8 sm:mb-12 lg:mb-16">
-          {/* Column 1 - Navigation Links */}
-          <div ref={el => sectionRefs.current[0] = el} className="sm:col-span-2 lg:col-span-1">
+          {/* Mobile View - Two Columns */}
+          <div className="sm:hidden col-span-1">
+            <div className="grid grid-cols-2 gap-6">
+              {/* Navigation Column */}
+              <div ref={el => sectionRefs.current[0] = el} className="flex flex-col">
+                <h3 className="text-[#d4af37] text-sm font-semibold mb-3 tracking-wider uppercase text-left">Navigation</h3>
+                <ul className="space-y-2">
+                  {navigationLinks.map((link, index) => (
+                    <li key={link.name}>
+                      <a
+                        href={link.href}
+                        className="group flex items-center text-white/80 hover:text-[#d4af37] transition-all duration-300 text-xs font-medium uppercase tracking-wide"
+                      >
+                        <div className="w-1.5 h-1.5 bg-[#d4af37] rounded-full mr-2 group-hover:scale-125 transition-transform duration-300"></div>
+                        {link.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Events Column */}
+              <div ref={el => sectionRefs.current[1] = el} className="flex flex-col">
+                <h3 className="text-[#d4af37] text-sm font-semibold mb-3 tracking-wider uppercase text-left">Events</h3>
+                <ul className="space-y-2">
+                  {eventTypes.map((event, index) => (
+                    <li key={event.name}>
+                      <a
+                        href={event.href}
+                        className="group flex items-center text-white/80 hover:text-[#d4af37] transition-all duration-300 text-xs font-medium uppercase tracking-wide"
+                      >
+                        <div className="w-1.5 h-1.5 bg-[#d4af37] rounded-full mr-2 group-hover:scale-125 transition-transform duration-300"></div>
+                        {event.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Desktop View - Navigation Links */}
+          <div ref={el => sectionRefs.current[0] = el} className="hidden sm:block sm:col-span-2 lg:col-span-1">
             <h3 className="text-[#d4af37] text-base sm:text-lg font-semibold mb-4 sm:mb-6 tracking-wider uppercase">Navigation</h3>
             <ul className="space-y-2 sm:space-y-3 lg:space-y-4">
               {navigationLinks.map((link, index) => (
@@ -134,8 +175,8 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Column 2 - Event Types */}
-          <div ref={el => sectionRefs.current[1] = el} className="sm:col-span-2 lg:col-span-1">
+          {/* Desktop View - Event Types */}
+          <div ref={el => sectionRefs.current[1] = el} className="hidden sm:block sm:col-span-2 lg:col-span-1">
             <h3 className="text-[#d4af37] text-base sm:text-lg font-semibold mb-4 sm:mb-6 tracking-wider uppercase">Events</h3>
             <ul className="space-y-2 sm:space-y-3 lg:space-y-4">
               {eventTypes.map((event, index) => (
