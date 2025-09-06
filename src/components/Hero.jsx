@@ -19,6 +19,21 @@ const Hero = ({ shouldAnimate = true }) => {
 
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } })
 
+    // Animate background image - "turning on the lights" effect
+    tl.fromTo(backgroundRef.current,
+      { 
+        opacity: 0,
+        filter: 'brightness(0) contrast(0.8)'
+      },
+      { 
+        opacity: 1,
+        filter: 'brightness(1) contrast(1)',
+        duration: 1.5,
+        ease: "power4.inOut"
+      },
+      0
+    )
+
     // Animate top lines with center-out effect
     tl.fromTo(".top-left-line",
       { 
@@ -131,12 +146,13 @@ const Hero = ({ shouldAnimate = true }) => {
       className="relative h-screen min-h-[600px] w-full overflow-hidden"
     >
       {/* Background Image */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
+      <div className="absolute inset-0 z-0 overflow-hidden bg-black">
         <div 
           ref={backgroundRef}
-          className="w-full h-full bg-cover bg-center bg-no-repeat"
+          className="w-full h-full bg-cover bg-center bg-no-repeat opacity-0"
           style={{
-            backgroundImage: `url(${heroImage})`
+            backgroundImage: `url(${heroImage})`,
+            filter: 'brightness(0)'
           }}
         />
       </div>
@@ -150,15 +166,15 @@ const Hero = ({ shouldAnimate = true }) => {
           style={{ border: 'none', outline: 'none' }}
         >
           {/* Top Border Lines - Two separate lines with gap in center */}
-          <div className="top-left-line absolute top-0 left-0 w-[43%] h-0.5 bg-[#d4af37] origin-left opacity-0"></div>
+          <div className="top-left-line absolute top-0 left-0 w-[43%] h-0.5 bg-[#d4af37] origin-left opacity-0 sm:w-[40%]"></div>
           <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 flex items-center justify-center">
             <img 
               src={logo} 
               alt="Dewaan Banquet Logo" 
-              className="h-8 w-auto sm:h-10 md:h-16"
+              className="h-8 w-auto sm:h-12 md:h-16"
             />
           </div>
-          <div className="top-right-line absolute top-0 right-0 w-[43%] h-0.5 bg-[#d4af37] origin-right opacity-0"></div>
+          <div className="top-right-line absolute top-0 right-0 w-[43%] h-0.5 bg-[#d4af37] origin-right opacity-0 sm:w-[40%]"></div>
           
           {/* Main Content - Centered */}
           <div className="flex flex-col items-center justify-center text-center space-y-2 sm:space-y-3 md:space-y-4 w-full px-2 sm:px-4">
@@ -202,8 +218,8 @@ const Hero = ({ shouldAnimate = true }) => {
           <div className="right-line absolute top-0 right-0 bottom-0 w-0.5 bg-[#d4af37] origin-top opacity-0"></div>
           
           {/* Bottom Border Lines - Two separate lines with gap in center */}
-          <div className="bottom-left-line absolute bottom-0 left-0 h-0.5 w-[43%] bg-[#d4af37] origin-left opacity-0"></div>
-          <div className="bottom-right-line absolute bottom-0 right-0 h-0.5 w-[43%] bg-[#d4af37] origin-right opacity-0"></div>
+          <div className="bottom-left-line absolute bottom-0 left-0 h-0.5 w-[43%] bg-[#d4af37] origin-left opacity-0 sm:w-[40%]"></div>
+          <div className="bottom-right-line absolute bottom-0 right-0 h-0.5 w-[43%] bg-[#d4af37] origin-right opacity-0 sm:w-[40%]"></div>
           
           {/* Since 2018 and Stars in center of bottom border */}
           <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 text-center">

@@ -8,7 +8,7 @@ import Footer from './Footer'
 
 const HomePage = ({ shouldAnimate }) => {
   return (
-    <div className="min-h-screen bg-[#faf8f5]">
+    <div className="min-h-screen bg-[#000000]">
       <Hero shouldAnimate={shouldAnimate} />
       <Navigation />
       <About />
