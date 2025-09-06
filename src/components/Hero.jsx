@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import logo from '../assets/Images/logo.png'
+import heroImage from '../assets/Images/hero.png'
 
 const Hero = ({ shouldAnimate = true }) => {
   const heroRef = useRef(null)
@@ -135,7 +136,7 @@ const Hero = ({ shouldAnimate = true }) => {
           ref={backgroundRef}
           className="w-full h-full bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `url('/src/assets/Images/hero.png')`
+            backgroundImage: `url(${heroImage})`
           }}
         />
       </div>
