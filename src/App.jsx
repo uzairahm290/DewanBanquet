@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Lenis from 'lenis'
@@ -11,6 +12,8 @@ import Gallery from './components/Gallery'
 import Testimonials from './components/Testimonials'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import ErrorPage from './components/ErrorPage'
+import HomePage from './components/HomePage'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -51,18 +54,13 @@ function App() {
   }
 
   return (
-    <>
+    <Router>
       {isLoading && <Preloader onComplete={handlePreloaderComplete} />}
-      <div className="min-h-screen bg-[#faf8f5]">
-        <Hero shouldAnimate={!isLoading} />
-        <Navigation />
-        <About />
-        <Services />
-        <Gallery />
-        <Contact />
-        <Footer />
-      </div>
-    </>
+      <Routes>
+        <Route path="/" element={<HomePage shouldAnimate={!isLoading} />} />
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
+    </Router>
   )
 }
 
