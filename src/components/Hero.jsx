@@ -1,7 +1,8 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import logo from '../assets/Images/logo.png'
 import heroImage from '../assets/Images/hero.png'
+import heroVideo from '../assets/Images/hero.mp4'
 
 const Hero = ({ shouldAnimate = true }) => {
   const heroRef = useRef(null)
@@ -13,6 +14,8 @@ const Hero = ({ shouldAnimate = true }) => {
   const starsRef = useRef(null)
   const frameRef = useRef(null)
   const backgroundRef = useRef(null)
+  const videoRef = useRef(null)
+  const [showVideo, setShowVideo] = useState(false)
 
   useEffect(() => {
     if (!shouldAnimate) return
@@ -33,6 +36,17 @@ const Hero = ({ shouldAnimate = true }) => {
       },
       0
     )
+
+    // After image animation completes, transition to video
+    tl.call(() => {
+      setShowVideo(true)
+      // Small delay to ensure video element is rendered
+      setTimeout(() => {
+        if (videoRef.current) {
+          videoRef.current.play().catch(console.error)
+        }
+      }, 100)
+    }, null, 4)
 
     // Animate top lines with center-out effect
     tl.fromTo(".top-left-line",
@@ -145,7 +159,7 @@ const Hero = ({ shouldAnimate = true }) => {
       ref={heroRef}
       className="relative h-screen min-h-[600px] w-full overflow-hidden"
     >
-      {/* Background Image */}
+      {/* Background Image - Shows first */}
       <div className="absolute inset-0 z-0 overflow-hidden bg-black">
         <div 
           ref={backgroundRef}
@@ -156,6 +170,27 @@ const Hero = ({ shouldAnimate = true }) => {
           }}
         />
       </div>
+
+      {/* Background Video - Shows after image animation */}
+      {showVideo && (
+        <div className="absolute inset-0 z-0 overflow-hidden bg-black">
+          <video 
+            ref={videoRef}
+            className="w-full h-full object-cover opacity-100"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            style={{
+              filter: 'brightness(1) contrast(1)'
+            }}
+          >
+            <source src={heroVideo} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      )}
 
       {/* Main Content Container */}
       <div className="absolute inset-0 z-10 flex items-center justify-center w-full px-6 sm:px-6 md:px-8 border-0 outline-none" style={{ border: 'none', outline: 'none' }}>
