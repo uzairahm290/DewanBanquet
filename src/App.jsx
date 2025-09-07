@@ -15,6 +15,7 @@ import Footer from './components/Footer'
 import ErrorPage from './components/ErrorPage'
 import HomePage from './components/HomePage'
 import GalleryPage from './components/GalleryPage'
+import ScrollToTop from './components/ScrollToTop'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -62,6 +63,7 @@ function App() {
         <Route path="/gallery" element={<GalleryPage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
+      <ScrollToTop />
     </Router>
   )
 }
