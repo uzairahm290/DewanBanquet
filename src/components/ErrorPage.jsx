@@ -178,7 +178,7 @@ const ErrorPage = () => {
         {/* Additional Info */}
         <div className="text-white/50 text-sm">
           <p className="mb-2">Need assistance?</p>
-          <p>Call us at <span className="text-[#d4af37] font-semibold">(818) 352-7748</span></p>
+          <p>Call us at <span className="text-[#d4af37] font-semibold">(+92) 334-6081111</span></p>
         </div>
       </div>
 

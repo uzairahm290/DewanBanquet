@@ -136,14 +136,6 @@ const CustomCursor = () => {
 
       {/* Hide default cursor */}
       <style jsx global>{`
-        * {
-          cursor: none !important;
-        }
-        
-        body {
-          cursor: none !important;
-        }
-        
         /* Show default cursor for text inputs */
         input[type="text"], 
         input[type="email"], 
