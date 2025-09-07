@@ -344,9 +344,9 @@ const Hero = ({ shouldAnimate = true }) => {
               ref={taglineRef}
               className="text-[#d4af37] text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold tracking-[0.1em] sm:tracking-[0.12em] md:tracking-[0.15em] opacity-90"
               style={{ 
-                fontFamily: 'Playfair Display, serif',
-                fontWeight: '700',
-                letterSpacing: '0.1em',
+                fontFamily: 'Quicksand, sans-serif',
+                fontWeight: '500',
+                letterSpacing: '0.05em',
                 lineHeight: '1.2'
               }}
             >

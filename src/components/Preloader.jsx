@@ -121,10 +121,10 @@ const Preloader = ({ onComplete }) => {
           <h2 
             className="text-[#d4af37] text-2xl font-bold tracking-tight"
             style={{ 
-              fontFamily: 'Playfair Display, serif',
-              fontWeight: '700',
-              letterSpacing: '-0.02em',
-              lineHeight: '1.1'
+              fontFamily: 'Quicksand, sans-serif',
+              fontWeight: '500',
+              letterSpacing: '0.05em',
+              lineHeight: '1.2'
             }}
           >
             Moments Together
