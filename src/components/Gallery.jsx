@@ -61,6 +61,49 @@ const Gallery = () => {
   ]
 
   useEffect(() => {
+    // Register ScrollTrigger plugin
+    gsap.registerPlugin(ScrollTrigger)
+
+    // Animate section header
+    gsap.fromTo(sectionRef.current?.querySelector('h2'),
+      { 
+        y: 50,
+        opacity: 0
+      },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    )
+
+    gsap.fromTo(sectionRef.current?.querySelector('p'),
+      { 
+        y: 30,
+        opacity: 0
+      },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        ease: "power3.out",
+        delay: 0.2,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    )
+
     // Animate images with clip-path and scaling
     imagesRef.current.forEach((image, index) => {
       if (image) {
@@ -87,6 +130,29 @@ const Gallery = () => {
         )
       }
     })
+
+    // Animate mobile carousel
+    const mobileCarousel = sectionRef.current?.querySelector('.md\\:hidden')
+    if (mobileCarousel) {
+      gsap.fromTo(mobileCarousel,
+        { 
+          y: 50,
+          opacity: 0
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: mobileCarousel,
+            start: "top 85%",
+            end: "bottom 15%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      )
+    }
   }, [])
 
   const handleImageHover = (index, isHovering) => {
@@ -125,8 +191,8 @@ const Gallery = () => {
           </p>
         </div>
 
-        {/* Uniform Grid Gallery */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {/* Gallery Grid - Desktop */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {galleryImages.map((image, index) => (
             <div
               key={index}
@@ -152,6 +218,57 @@ const Gallery = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Gallery Carousel - Mobile */}
+        <div className="md:hidden">
+          {/* Scroll Indicator */}
+          <div className="text-center mb-4">
+            <div className="inline-flex items-center gap-2 text-sm text-gray-500">
+              <span>Swipe to explore</span>
+              <div className="flex gap-1">
+                <div className="w-1 h-1 bg-gray-400 rounded-full animate-pulse"></div>
+                <div className="w-1 h-1 bg-gray-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+                <div className="w-1 h-1 bg-gray-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="flex overflow-x-auto gap-6 pb-4 scrollbar-hide" style={{ scrollSnapType: 'x mandatory' }}>
+            {/* Group images by category */}
+            {['Interior', 'Wedding'].map((category) => {
+              const categoryImages = galleryImages.filter(img => img.category === category)
+              return (
+                <div
+                  key={category}
+                  className="flex-shrink-0 w-full"
+                  style={{ scrollSnapAlign: 'start' }}
+                >
+                  {/* Category Header */}
+                  <div className="text-center mb-4">
+                    <h3 className="text-2xl font-bold text-gray-800">{category}</h3>
+                    <div className="w-16 h-1 bg-[#d4af37] mx-auto mt-2 rounded-full"></div>
+                  </div>
+                  
+                  {/* Category Images Grid */}
+                  <div className="grid grid-cols-2 gap-3">
+                    {categoryImages.map((image, index) => (
+                      <div
+                        key={`${category}-${index}`}
+                        className="relative w-full h-40 rounded-xl overflow-hidden shadow-lg"
+                      >
+                        <img
+                          src={image.src}
+                          alt={image.alt}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )
+            })}
+          </div>
         </div>
 
         {/* View More Button */}

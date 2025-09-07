@@ -41,6 +41,49 @@ const Services = () => {
   ]
 
   useEffect(() => {
+    // Register ScrollTrigger plugin
+    gsap.registerPlugin(ScrollTrigger)
+
+    // Animate section header
+    gsap.fromTo(sectionRef.current?.querySelector('h2'),
+      { 
+        y: 50,
+        opacity: 0
+      },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    )
+
+    gsap.fromTo(sectionRef.current?.querySelector('p'),
+      { 
+        y: 30,
+        opacity: 0
+      },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        ease: "power3.out",
+        delay: 0.2,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    )
+
     // Animate cards with staggered rotation and scale
     cardsRef.current.forEach((card, index) => {
       if (card) {
@@ -75,6 +118,29 @@ const Services = () => {
         }
       }
     })
+
+    // Animate mobile carousel
+    const mobileCarousel = sectionRef.current?.querySelector('.md\\:hidden')
+    if (mobileCarousel) {
+      gsap.fromTo(mobileCarousel,
+        { 
+          y: 50,
+          opacity: 0
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: mobileCarousel,
+            start: "top 85%",
+            end: "bottom 15%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      )
+    }
   }, [])
 
   const handleCardHover = (index, isHovering) => {
