@@ -331,7 +331,7 @@ const Navigation = () => {
                       className="h-25 w-auto"
                     />
                   </div>
-                  <p className="text-white/50 text-sm mt-2">SINCE 2018</p>
+                  <p className="text-white/50 text-sm mt-2">SINCE 2023</p>
                 </div>
 
                 {/* Contact Information */}

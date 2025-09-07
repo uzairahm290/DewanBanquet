@@ -92,18 +92,18 @@ const About = () => {
             </p>
             
             <p className="text-lg text-gray-600 leading-relaxed">
-              With over two decades of experience in event hosting, we understand that 
+              With our commitment to excellence and attention to detail, we understand that 
               every celebration is unique. Our dedicated team works tirelessly to ensure 
               that your special moments are transformed into unforgettable memories.
             </p>
 
             <div className="grid grid-cols-2 gap-8 mt-12">
               <div className="text-center">
-                <div className="text-3xl font-bold text-[#d4af37] mb-2">500+</div>
+                <div className="text-3xl font-bold text-[#d4af37] mb-2">200+</div>
                 <div className="text-gray-600">Events Hosted</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-[#d4af37] mb-2">20+</div>
+                <div className="text-3xl font-bold text-[#d4af37] mb-2">2+</div>
                 <div className="text-gray-600">Years Experience</div>
               </div>
             </div>

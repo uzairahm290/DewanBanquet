@@ -119,7 +119,7 @@ const Preloader = ({ onComplete }) => {
         {/* Brand Text */}
         <div ref={textRef} className="text-center">
           <p className="text-white/70 text-sm font-light tracking-[0.2em] uppercase">
-            Since 2018
+            Since 2023
           </p>
           <div className="mt-4 flex justify-center space-x-1">
             {[...Array(5)].map((_, i) => (

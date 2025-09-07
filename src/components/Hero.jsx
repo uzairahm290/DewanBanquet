@@ -256,7 +256,7 @@ const Hero = ({ shouldAnimate = true }) => {
           <div className="bottom-left-line absolute bottom-0 left-0 h-0.5 w-[38%] bg-[#d4af37] origin-left opacity-0 sm:w-[38%] md:w-[43%]"></div>
           <div className="bottom-right-line absolute bottom-0 right-0 h-0.5 w-[38%] bg-[#d4af37] origin-right opacity-0 sm:w-[38%] md:w-[43%]"></div>
           
-          {/* Since 2018 and Stars in center of bottom border */}
+          {/* Since 2023 and Stars in center of bottom border */}
           <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 text-center">
             <h4 
               ref={sinceRef}
@@ -267,7 +267,7 @@ const Hero = ({ shouldAnimate = true }) => {
                 letterSpacing: '0.1em'
               }}
             >
-              SINCE 2018
+              SINCE 2023
             </h4>
             
             <div 
