@@ -295,10 +295,6 @@ const Navigation = () => {
                       className="h-6 w-auto"
                     />
                   </div>
-                  <div>
-                    <h1 className="text-[#d4af37] text-lg font-bold font-serif">DEWAAN</h1>
-                    <p className="text-white/70 text-xs font-light tracking-wider">BANQUET HALL</p>
-                  </div>
                 </div>
                 <button
                   onClick={toggleMenu}
@@ -410,7 +406,7 @@ const Navigation = () => {
               </div>
 
           {/* Navigation Links */}
-              <div className="flex-1 flex items-center justify-center px-6 sm:px-8 lg:px-12">
+              <div className="flex-1 flex items-center justify-center px-6 py-4 sm:px-8 lg:px-12">
                 <div className="w-full max-w-sm space-y-2">
             {navItems.map((item, index) => (
               <a

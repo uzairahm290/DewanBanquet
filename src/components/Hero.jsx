@@ -28,7 +28,7 @@ const Hero = ({ shouldAnimate = true }) => {
       { 
         opacity: 1,
         filter: 'brightness(1) contrast(1)',
-        duration: 1.5,
+        duration: 2,
         ease: "power4.inOut"
       },
       0
@@ -158,23 +158,23 @@ const Hero = ({ shouldAnimate = true }) => {
       </div>
 
       {/* Main Content Container */}
-      <div className="absolute inset-0 z-10 flex items-center justify-center w-full px-4 sm:px-6 md:px-8 border-0 outline-none" style={{ border: 'none', outline: 'none' }}>
+      <div className="absolute inset-0 z-10 flex items-center justify-center w-full px-6 sm:px-6 md:px-8 border-0 outline-none" style={{ border: 'none', outline: 'none' }}>
         {/* Small Border Lines */}
         <div 
           ref={frameRef}
-          className="relative bg-transparent py-4 sm:py-6 md:py-8 px-3 sm:px-4 md:px-6 w-full max-w-4xl flex flex-col justify-center border-0 outline-none"
+          className="relative bg-transparent py-10 sm:py-6 md:py-8 px-4 sm:px-4 md:px-6 w-full max-w-4xl flex flex-col justify-center border-0 outline-none"
           style={{ border: 'none', outline: 'none' }}
         >
           {/* Top Border Lines - Two separate lines with gap in center */}
-          <div className="top-left-line absolute top-0 left-0 w-[43%] h-0.5 bg-[#d4af37] origin-left opacity-0 sm:w-[40%]"></div>
+          <div className="top-left-line absolute top-0 left-0 w-[38%] h-0.5 bg-[#d4af37] origin-left opacity-0 sm:w-[38%] md:w-[43%]"></div>
           <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 flex items-center justify-center">
             <img 
               src={logo} 
               alt="Dewaan Banquet Logo" 
-              className="h-8 w-auto sm:h-12 md:h-16"
+              className="h-12 w-auto sm:h-12 md:h-16"
             />
           </div>
-          <div className="top-right-line absolute top-0 right-0 w-[43%] h-0.5 bg-[#d4af37] origin-right opacity-0 sm:w-[40%]"></div>
+          <div className="top-right-line absolute top-0 right-0 w-[38%] h-0.5 bg-[#d4af37] origin-right opacity-0 sm:w-[38%] md:w-[43%]"></div>
           
           {/* Main Content - Centered */}
           <div className="flex flex-col items-center justify-center text-center space-y-2 sm:space-y-3 md:space-y-4 w-full px-2 sm:px-4">
@@ -218,8 +218,8 @@ const Hero = ({ shouldAnimate = true }) => {
           <div className="right-line absolute top-0 right-0 bottom-0 w-0.5 bg-[#d4af37] origin-top opacity-0"></div>
           
           {/* Bottom Border Lines - Two separate lines with gap in center */}
-          <div className="bottom-left-line absolute bottom-0 left-0 h-0.5 w-[43%] bg-[#d4af37] origin-left opacity-0 sm:w-[40%]"></div>
-          <div className="bottom-right-line absolute bottom-0 right-0 h-0.5 w-[43%] bg-[#d4af37] origin-right opacity-0 sm:w-[40%]"></div>
+          <div className="bottom-left-line absolute bottom-0 left-0 h-0.5 w-[38%] bg-[#d4af37] origin-left opacity-0 sm:w-[38%] md:w-[43%]"></div>
+          <div className="bottom-right-line absolute bottom-0 right-0 h-0.5 w-[38%] bg-[#d4af37] origin-right opacity-0 sm:w-[38%] md:w-[43%]"></div>
           
           {/* Since 2018 and Stars in center of bottom border */}
           <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 text-center">
