@@ -38,22 +38,22 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - Hidden for cleaner look */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 0px;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--cream);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--gold);
-  border-radius: 4px;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--gold-dark);
+  background: transparent;
 }
 
 
