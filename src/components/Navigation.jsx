@@ -29,12 +29,9 @@ const Navigation = () => {
 
   const navItems = [
     { name: 'HOME', href: '#home' },
-    { name: 'WEDDINGS', href: '/events#weddings' },
-    { name: 'BIRTHDAY', href: '/events#birthday-parties' },
-    { name: 'CORPORATE EVENTS', href: '/events#corporate-events' },
+    { name: 'SERVICES', href: '#services' },
     { name: 'GALLERY', href: '/gallery' },
-    { name: 'ABOUT US', href: '#about' },
-    { name: 'CONTACT US', href: '#contact' }
+    { name: 'ABOUT US', href: '#about' }
   ]
 
   const toggleMenu = () => {

@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { Link } from 'react-router-dom'
 
 // Import local images for services
 import weddingImg from '../assets/Images/wedding1.png'
@@ -17,21 +18,25 @@ const Services = () => {
       title: "Weddings",
       description: "Create your perfect day with our elegant wedding packages. From intimate ceremonies to grand celebrations at Dewaan Banquet Hall.",
       image: weddingImg,
+      link: "/events#weddings"
     },
     {
       title: "Corporate Events",
       description: "Professional venues for business meetings, conferences, and corporate celebrations with state-of-the-art facilities.",
       image: corporateImg,
+      link: "/events#corporate-events"
     },
     {
       title: "Receptions",
       description: "Host grand receptions in our luxurious halls with state-of-the-art sound systems, elegant lighting, and world-class catering facilities.",
       image: privateImg,
+      link: "/events#receptions"
     },
     {
       title: "Special Occasions",
       description: "Birthdays, anniversaries, and milestone celebrations made memorable with our expert planning and elegant spaces.",
       image: specialImg,
+      link: "/events#birthday-parties"
     }
   ]
 
@@ -165,15 +170,16 @@ const Services = () => {
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Services Grid - Desktop */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, index) => (
-            <div
+            <Link
               key={service.title}
+              to={service.link}
               ref={el => cardsRef.current[index] = el}
               onMouseEnter={() => handleCardHover(index, true)}
               onMouseLeave={() => handleCardHover(index, false)}
-              className="group cursor-pointer"
+              className="group cursor-pointer block"
             >
               <div className="relative h-80 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
                 {/* Background Image */}
@@ -202,8 +208,50 @@ const Services = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
+        </div>
+
+        {/* Services Carousel - Mobile */}
+        <div className="md:hidden">
+          <div className="flex overflow-x-auto gap-4 pb-4 scrollbar-hide" style={{ scrollSnapType: 'x mandatory' }}>
+            {services.map((service, index) => (
+              <Link
+                key={service.title}
+                to={service.link}
+                className="flex-shrink-0 w-72 h-80 rounded-2xl overflow-hidden shadow-lg transition-all duration-300 active:scale-95"
+                style={{ scrollSnapAlign: 'start' }}
+              >
+                <div className="relative h-full">
+                  {/* Background Image */}
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover"
+                  />
+                  
+                  {/* Dark Overlay */}
+                  <div className="absolute inset-0 bg-black/40"></div>
+                  
+                  {/* Title - Always centered on mobile */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center">
+                      {/* Top Line */}
+                      <div className="w-16 h-0.5 bg-white mx-auto mb-3"></div>
+                      
+                      {/* Title */}
+                      <h3 className="text-white text-lg font-semibold px-4">
+                        {service.title}
+                      </h3>
+                      
+                      {/* Bottom Line */}
+                      <div className="w-16 h-0.5 bg-white mx-auto mt-3"></div>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </section>

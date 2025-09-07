@@ -82,7 +82,7 @@ const About = () => {
           {/* Content */}
           <div ref={contentRef} className="space-y-6">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-              About <span className="text-gradient">Dewaan Banquet</span>
+              About <span className="text-gradient">Dewan Banquet</span>
             </h2>
             
             <p className="text-lg text-gray-600 leading-relaxed">

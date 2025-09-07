@@ -46,12 +46,10 @@ const Footer = () => {
 
   const navigationLinks = [
     { name: 'HOME', href: '#home' },
-    { name: 'WEDDINGS', href: '/events#weddings' },
-    { name: 'BIRTHDAY', href: '/events#birthday-parties' },
-    { name: 'CORPORATE EVENTS', href: '/events#corporate-events' },
+    { name: 'EVENTS', href: '/events' },
     { name: 'GALLERY', href: '/gallery' },
     { name: 'ABOUT US', href: '#about' },
-    { name: 'CONTACT', href: '#contact' }
+    { name: 'TESTIMONIALS', href: '#testimonials' },   
   ]
 
   const eventTypes = [

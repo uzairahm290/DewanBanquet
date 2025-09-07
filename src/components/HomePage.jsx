@@ -4,7 +4,6 @@ import About from './About'
 import Services from './Services'
 import Gallery from './Gallery'
 import Testimonials from './Testimonials'
-import Contact from './Contact'
 import Footer from './Footer'
 
 const HomePage = ({ shouldAnimate }) => {
@@ -16,7 +15,6 @@ const HomePage = ({ shouldAnimate }) => {
       <Services />
       <Gallery />
       <Testimonials />
-      <Contact />
       <Footer />
     </div>
   )

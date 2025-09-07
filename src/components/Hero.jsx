@@ -41,12 +41,6 @@ const Hero = ({ shouldAnimate = true }) => {
     // After image animation completes, transition to video
     tl.call(() => {
       setShowVideo(true)
-      // Small delay to ensure video element is rendered
-      setTimeout(() => {
-        if (videoRef.current) {
-          videoRef.current.play().catch(console.error)
-        }
-      }, 100)
     }, null, 4)
 
     // Animate top lines with center-out effect
