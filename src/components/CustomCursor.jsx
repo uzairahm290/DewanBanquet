@@ -1,9 +1,27 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const CustomCursor = () => {
   const cursorRef = useRef(null)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
+    // Check if device is mobile/touch
+    const checkMobile = () => {
+      const isMobileDevice = window.innerWidth <= 768 || 'ontouchstart' in window
+      setIsMobile(isMobileDevice)
+    }
+
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+
+    return () => {
+      window.removeEventListener('resize', checkMobile)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (isMobile) return
+
     const cursor = cursorRef.current
     if (!cursor) return
 
@@ -20,7 +38,10 @@ const CustomCursor = () => {
     return () => {
       window.removeEventListener('mousemove', handleMouseMove)
     }
-  }, [])
+  }, [isMobile])
+
+  // Don't render custom cursor on mobile
+  if (isMobile) return null
 
   return (
     <>
@@ -65,9 +86,13 @@ const CustomCursor = () => {
           cursor: text !important;
         }
         
-        /* Hide custom cursor on mobile */
-        @media (max-width: 768px) {
+        /* Hide custom cursor on mobile and touch devices */
+        @media (max-width: 768px), (hover: none) {
           * {
+            cursor: auto !important;
+          }
+          
+          body {
             cursor: auto !important;
           }
         }
