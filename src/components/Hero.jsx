@@ -10,6 +10,7 @@ const Hero = ({ shouldAnimate = true }) => {
   const welcomeRef = useRef(null)
   const headingRef = useRef(null)
   const subtitleRef = useRef(null)
+  const taglineRef = useRef(null)
   const sinceRef = useRef(null)
   const starsRef = useRef(null)
   const frameRef = useRef(null)
@@ -140,6 +141,93 @@ const Hero = ({ shouldAnimate = true }) => {
       },
       0
     )
+
+    // Animate text elements
+    tl.fromTo(welcomeRef.current,
+      { 
+        y: 30, 
+        opacity: 0 
+      },
+      { 
+        y: 0, 
+        opacity: 0.9, 
+        duration: 0.8, 
+        ease: "power3.out" 
+      },
+      1.5
+    )
+
+    tl.fromTo(headingRef.current,
+      { 
+        y: 50, 
+        opacity: 0, 
+        scale: 0.8 
+      },
+      { 
+        y: 0, 
+        opacity: 1, 
+        scale: 1, 
+        duration: 1.0, 
+        ease: "power3.out" 
+      },
+      1.8
+    )
+
+    tl.fromTo(subtitleRef.current,
+      { 
+        y: 30, 
+        opacity: 0 
+      },
+      { 
+        y: 0, 
+        opacity: 0.95, 
+        duration: 0.8, 
+        ease: "power3.out" 
+      },
+      2.2
+    )
+
+    tl.fromTo(taglineRef.current,
+      { 
+        y: 20, 
+        opacity: 0 
+      },
+      { 
+        y: 0, 
+        opacity: 0.9, 
+        duration: 0.6, 
+        ease: "power3.out" 
+      },
+      2.6
+    )
+
+    tl.fromTo(sinceRef.current,
+      { 
+        y: 20, 
+        opacity: 0 
+      },
+      { 
+        y: 0, 
+        opacity: 0.7, 
+        duration: 0.6, 
+        ease: "power3.out" 
+      },
+      3.0
+    )
+
+    tl.fromTo(starsRef.current,
+      { 
+        scale: 0, 
+        opacity: 0 
+      },
+      { 
+        scale: 1, 
+        opacity: 1, 
+        duration: 0.5, 
+        ease: "back.out(1.7)" 
+      },
+      3.2
+    )
   }, [shouldAnimate])
 
   // Star component for rating display
@@ -212,7 +300,10 @@ const Hero = ({ shouldAnimate = true }) => {
           <div className="top-right-line absolute top-0 right-0 w-[38%] h-0.5 bg-[#d4af37] origin-right opacity-0 sm:w-[38%] md:w-[43%]"></div>
           
           {/* Main Content - Centered */}
-          <div className="flex flex-col items-center justify-center text-center space-y-2 sm:space-y-3 md:space-y-4 w-full px-2 sm:px-4">
+          <div className="relative flex flex-col items-center justify-center text-center space-y-2 sm:space-y-3 md:space-y-4 w-full px-2 sm:px-4">
+            {/* Background overlay for better text visibility */}
+            <div className="absolute inset-0 bg-black/20 backdrop-blur-[2px] rounded-lg -m-4"></div>
+            <div className="relative z-10 flex flex-col items-center justify-center text-center space-y-2 sm:space-y-3 md:space-y-4 w-full px-2 sm:px-4">
             {/* Welcome Text */}
             <h2 
               ref={welcomeRef}
@@ -245,8 +336,23 @@ const Hero = ({ shouldAnimate = true }) => {
               ref={subtitleRef}
               className="text-white text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-light tracking-[0.15em] sm:tracking-[0.18em] md:tracking-[0.2em] uppercase opacity-95"
             >
-              BANQUET HALL
+              BANQUET
             </h3>
+            
+            {/* Tagline */}
+            <h4 
+              ref={taglineRef}
+              className="text-[#d4af37] text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold tracking-[0.1em] sm:tracking-[0.12em] md:tracking-[0.15em] opacity-90"
+              style={{ 
+                fontFamily: 'Playfair Display, serif',
+                fontWeight: '700',
+                letterSpacing: '0.1em',
+                lineHeight: '1.2'
+              }}
+            >
+              Moments Together
+            </h4>
+            </div>
       </div>
 
           {/* Right Border Line */}

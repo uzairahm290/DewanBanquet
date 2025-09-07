@@ -100,7 +100,7 @@ const Preloader = ({ onComplete }) => {
         {/* Main Logo */}
         <div 
           ref={logoRef}
-          className="relative z-10 mb-6"
+          className="relative z-10 mb-4"
           style={{
             transformStyle: 'preserve-3d',
             perspective: '1000px'
@@ -114,6 +114,21 @@ const Preloader = ({ onComplete }) => {
               filter: 'drop-shadow(0 0 20px rgba(212, 175, 55, 0.5))'
             }}
           />
+        </div>
+
+        {/* Tagline */}
+        <div className="mb-6">
+          <h2 
+            className="text-[#d4af37] text-2xl font-bold tracking-tight"
+            style={{ 
+              fontFamily: 'Playfair Display, serif',
+              fontWeight: '700',
+              letterSpacing: '-0.02em',
+              lineHeight: '1.1'
+            }}
+          >
+            Moments Together
+          </h2>
         </div>
 
         {/* Brand Text */}
