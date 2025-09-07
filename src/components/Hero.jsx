@@ -32,8 +32,8 @@ const Hero = ({ shouldAnimate = true }) => {
       { 
         opacity: 1,
         filter: 'brightness(1) contrast(1)',
-        duration: 2,
-        ease: "power4.inOut"
+        duration: 3,
+        ease: "power3.inOut"
       },
       0
     )
@@ -54,30 +54,30 @@ const Hero = ({ shouldAnimate = true }) => {
       { 
         scaleX: 0, 
         opacity: 0, 
-        transformOrigin: "right left" 
+        transformOrigin: "right center" 
       },
       { 
         scaleX: 1, 
         opacity: 1,
-        duration: 3.0, 
-        ease: "power3.out"
+        duration: 2.5, 
+        ease: "power2.out"
       },
-      0
+      0.5
     )
 
     tl.fromTo(".top-right-line",
       { 
         scaleX: 0, 
         opacity: 0, 
-        transformOrigin: "left right" 
+        transformOrigin: "left center" 
       },
       { 
         scaleX: 1, 
         opacity: 1, 
-        duration: 3.0, 
-        ease: "power3.out" 
+        duration: 2.5, 
+        ease: "power2.out" 
       },
-      0
+      0.5
     )
 
     // Animate vertical lines with staggered timing
@@ -85,30 +85,30 @@ const Hero = ({ shouldAnimate = true }) => {
       { 
         scaleY: 0, 
         opacity: 0, 
-        transformOrigin: "bottom top" 
+        transformOrigin: "center top" 
       },
       { 
         scaleY: 1, 
         opacity: 1, 
-        duration: 3.0, 
-        ease: "power3.out" 
+        duration: 2.5, 
+        ease: "power2.out" 
       },
-      0
+      0.8
     )
 
     tl.fromTo(".right-line",
       { 
         scaleY: 0, 
         opacity: 0, 
-        transformOrigin: "top bottom" 
+        transformOrigin: "center bottom" 
       },
       { 
         scaleY: 1, 
         opacity: 1, 
-        duration: 3.0, 
-        ease: "power3.out" 
+        duration: 2.5, 
+        ease: "power2.out" 
       },
-      0
+      0.8
     )
 
     // Animate bottom lines with center-out effect and smooth timing
@@ -116,33 +116,33 @@ const Hero = ({ shouldAnimate = true }) => {
       { 
         scaleX: 0, 
         opacity: 0, 
-        transformOrigin: "left right" 
+        transformOrigin: "left center" 
       },
       { 
         scaleX: 1, 
         opacity: 1, 
-        duration: 3.0, 
-        ease: "power3.out" 
+        duration: 2.5, 
+        ease: "power2.out" 
       },
-      0
+      1.1
     )
 
     tl.fromTo(".bottom-right-line",
       { 
         scaleX: 0, 
         opacity: 0, 
-        transformOrigin: "right left" 
+        transformOrigin: "right center" 
       },
       { 
         scaleX: 1, 
         opacity: 1, 
-        duration: 3.0, 
-        ease: "power3.out" 
+        duration: 2.5, 
+        ease: "power2.out" 
       },
-      0
+      1.1
     )
 
-    // Animate text elements
+    // Animate text elements - start early with border lines
     tl.fromTo(welcomeRef.current,
       { 
         y: 30, 
@@ -154,7 +154,7 @@ const Hero = ({ shouldAnimate = true }) => {
         duration: 0.8, 
         ease: "power3.out" 
       },
-      1.5
+      1.0
     )
 
     tl.fromTo(headingRef.current,
@@ -170,7 +170,7 @@ const Hero = ({ shouldAnimate = true }) => {
         duration: 1.0, 
         ease: "power3.out" 
       },
-      1.8
+      1.3
     )
 
     tl.fromTo(subtitleRef.current,
@@ -184,7 +184,7 @@ const Hero = ({ shouldAnimate = true }) => {
         duration: 0.8, 
         ease: "power3.out" 
       },
-      2.2
+      1.7
     )
 
     tl.fromTo(taglineRef.current,
@@ -198,7 +198,7 @@ const Hero = ({ shouldAnimate = true }) => {
         duration: 0.6, 
         ease: "power3.out" 
       },
-      2.6
+      2.0
     )
 
     tl.fromTo(sinceRef.current,
@@ -212,7 +212,7 @@ const Hero = ({ shouldAnimate = true }) => {
         duration: 0.6, 
         ease: "power3.out" 
       },
-      3.0
+      2.3
     )
 
     tl.fromTo(starsRef.current,
@@ -226,7 +226,7 @@ const Hero = ({ shouldAnimate = true }) => {
         duration: 0.5, 
         ease: "back.out(1.7)" 
       },
-      3.2
+      2.5
     )
   }, [shouldAnimate])
 
@@ -307,7 +307,7 @@ const Hero = ({ shouldAnimate = true }) => {
             {/* Welcome Text */}
             <h2 
               ref={welcomeRef}
-              className="text-white text-xs sm:text-sm md:text-base font-medium tracking-[0.2em] sm:tracking-[0.25em] md:tracking-[0.3em] uppercase opacity-90"
+              className="text-white text-xs sm:text-sm md:text-base font-medium tracking-[0.2em] sm:tracking-[0.25em] md:tracking-[0.3em] uppercase opacity-0"
               style={{ 
                 fontFamily: 'Inter, sans-serif',
                 letterSpacing: '0.2em',
@@ -320,7 +320,7 @@ const Hero = ({ shouldAnimate = true }) => {
             {/* Main Heading */}
         <h1 
           ref={headingRef}
-              className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-9xl font-bold tracking-tight"
+              className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-9xl font-bold tracking-tight opacity-0"
               style={{ 
                 fontFamily: 'Playfair Display, serif',
                 fontWeight: '700',
@@ -334,7 +334,7 @@ const Hero = ({ shouldAnimate = true }) => {
             {/* Subtitle */}
             <h3 
               ref={subtitleRef}
-              className="text-white text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-light tracking-[0.15em] sm:tracking-[0.18em] md:tracking-[0.2em] uppercase opacity-95"
+              className="text-white text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-light tracking-[0.15em] sm:tracking-[0.18em] md:tracking-[0.2em] uppercase opacity-0"
             >
               BANQUET
             </h3>
@@ -342,7 +342,7 @@ const Hero = ({ shouldAnimate = true }) => {
             {/* Tagline */}
             <h4 
               ref={taglineRef}
-              className="text-[#d4af37] text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold tracking-[0.1em] sm:tracking-[0.12em] md:tracking-[0.15em] opacity-90"
+              className="text-[#d4af37] text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold tracking-[0.1em] sm:tracking-[0.12em] md:tracking-[0.15em] opacity-0"
               style={{ 
                 fontFamily: 'Quicksand, sans-serif',
                 fontWeight: '500',
@@ -366,7 +366,7 @@ const Hero = ({ shouldAnimate = true }) => {
           <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 text-center">
             <h4 
               ref={sinceRef}
-              className="text-white text-xs sm:text-sm md:text-base font-medium mt-4 sm:mt-5 md:mt-6 mb-1 tracking-[0.1em] sm:tracking-[0.12em] md:tracking-[0.15em] uppercase opacity-90"
+              className="text-white text-xs sm:text-sm md:text-base font-medium mt-4 sm:mt-5 md:mt-6 mb-1 tracking-[0.1em] sm:tracking-[0.12em] md:tracking-[0.15em] uppercase opacity-0"
               style={{ 
                 fontFamily: 'Inter, sans-serif',
                 fontWeight: '500',
@@ -378,7 +378,7 @@ const Hero = ({ shouldAnimate = true }) => {
             
             <div 
               ref={starsRef}
-              className="flex justify-center space-x-0.5 sm:space-x-0.1"
+              className="flex justify-center space-x-0.5 sm:space-x-0.1 opacity-0"
             >
               {[1, 2, 3, 4, 5].map((star) => (
                 <Star key={star} filled={true} />

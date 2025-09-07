@@ -1,22 +1,17 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, Suspense, lazy } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Lenis from 'lenis'
 import Preloader from './components/Preloader'
-import Navigation from './components/Navigation'
-import Hero from './components/Hero'
-import About from './components/About'
-import Services from './components/Services'
-import Gallery from './components/Gallery'
-import Testimonials from './components/Testimonials'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
-import ErrorPage from './components/ErrorPage'
-import HomePage from './components/HomePage'
-import GalleryPage from './components/GalleryPage'
 import ScrollToTop from './components/ScrollToTop'
 import CustomCursor from './components/CustomCursor'
+
+// Lazy load pages for better performance
+const HomePage = lazy(() => import('./components/HomePage'))
+const GalleryPage = lazy(() => import('./components/GalleryPage'))
+const ServicesPage = lazy(() => import('./components/ServicesPage'))
+const ErrorPage = lazy(() => import('./components/ErrorPage'))
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -59,11 +54,16 @@ function App() {
   return (
     <Router>
       {isLoading && <Preloader onComplete={handlePreloaderComplete} />}
-      <Routes>
-        <Route path="/" element={<HomePage shouldAnimate={!isLoading} />} />
-        <Route path="/gallery" element={<GalleryPage />} />
-        <Route path="*" element={<ErrorPage />} />
-      </Routes>
+      <Suspense fallback={<div className="flex items-center justify-center min-h-screen bg-white">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"></div>
+      </div>}>
+        <Routes>
+          <Route path="/" element={<HomePage shouldAnimate={!isLoading} />} />
+          <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/events" element={<ServicesPage />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+      </Suspense>
       <ScrollToTop />
       <CustomCursor />
     </Router>

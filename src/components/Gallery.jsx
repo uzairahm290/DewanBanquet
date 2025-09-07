@@ -10,6 +10,8 @@ import img3 from '../assets/Images/interior3.jpg'
 import img4 from '../assets/Images/wedding1.png'
 import img5 from '../assets/Images/wedding2.png'
 import img6 from '../assets/Images/interior4.jpg'
+import img7 from '../assets/Images/wedding3.png'
+import img8 from '../assets/Images/interior5.jpg'
 
 const Gallery = () => {
   const sectionRef = useRef(null)
@@ -44,6 +46,16 @@ const Gallery = () => {
     {
       src: img6,
       alt: "Grand Hall Interior",
+      category: "Interior"
+    },
+    {
+      src: img7,
+      alt: "Special Wedding Celebration",
+      category: "Wedding"
+    },
+    {
+      src: img8,
+      alt: "Modern Banquet Space",
       category: "Interior"
     }
   ]
@@ -113,21 +125,21 @@ const Gallery = () => {
           </p>
         </div>
 
-        {/* Masonry Gallery */}
-        <div className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6">
+        {/* Uniform Grid Gallery */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {galleryImages.map((image, index) => (
             <div
               key={index}
-              className="break-inside-avoid mb-6 group cursor-pointer"
+              className="group cursor-pointer"
               onMouseEnter={() => handleImageHover(index, true)}
               onMouseLeave={() => handleImageHover(index, false)}
             >
-              <div className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
+              <div className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 aspect-square">
                 <img
                   ref={el => imagesRef.current[index] = el}
                   src={image.src}
                   alt={image.alt}
-                  className="w-full h-auto object-cover"
+                  className="w-full h-full object-cover"
                 />
                 
                 {/* Gold overlay on hover */}

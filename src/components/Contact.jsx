@@ -124,7 +124,14 @@ const Contact = () => {
                   </div>
                   <div>
                     <div className="text-white font-semibold">Address</div>
-                    <div className="text-gray-300">Rajana Road Near Suzuki Showroom, Toba Tek Singh</div>
+                    <a 
+                      href="https://maps.app.goo.gl/iqZJ83RBWX4ZxC186"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-300 hover:text-[#d4af37] transition-colors duration-300"
+                    >
+                      Rajana Road Near Suzuki Showroom, Toba Tek Singh
+                    </a>
                   </div>
                 </div>
 
@@ -254,7 +261,7 @@ const Contact = () => {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         .ripple-effect {
           position: absolute;
           border-radius: 50%;

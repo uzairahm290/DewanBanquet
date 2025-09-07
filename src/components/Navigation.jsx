@@ -29,9 +29,9 @@ const Navigation = () => {
 
   const navItems = [
     { name: 'HOME', href: '#home' },
-    { name: 'VENUE', href: '#venue' },
-    { name: 'MENU', href: '#menu' },
-    { name: 'EVENTS', href: '#events' },
+    { name: 'WEDDINGS', href: '/events#weddings' },
+    { name: 'BIRTHDAY', href: '/events#birthday-parties' },
+    { name: 'CORPORATE EVENTS', href: '/events#corporate-events' },
     { name: 'GALLERY', href: '/gallery' },
     { name: 'ABOUT US', href: '#about' },
     { name: 'CONTACT US', href: '#contact' }
@@ -204,14 +204,14 @@ const Navigation = () => {
         <div className="flex items-center justify-between w-full">
           {/* Logo - Left Side */}
           <div className="flex items-center">
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-[#d4af37] to-[#b8941f] rounded-full blur-lg opacity-30"></div>
+            <a href="/" className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-r from-[#d4af37] to-[#b8941f] rounded-full blur-lg opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
               <img 
                 src={logo} 
                 alt="Dewaan Banquet Logo" 
-                className="h-12 w-auto relative z-10"
+                className="h-12 w-auto relative z-10 group-hover:scale-105 transition-transform duration-300"
               />
-            </div>
+            </a>
           </div>
 
           {/* Right Side - Phone Number and Menu */}
@@ -363,7 +363,14 @@ const Navigation = () => {
                     </div>
                     <div>
                       <p className="text-[#d4af37] text-sm font-medium">Location</p>
-                      <p className="text-white text-base">Rajana Road Near Suzuki Showroom, Toba Tek Singh</p>
+                      <a 
+                        href="https://maps.app.goo.gl/iqZJ83RBWX4ZxC186"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white text-base hover:text-[#d4af37] transition-colors duration-300"
+                      >
+                        Rajana Road Near Suzuki Showroom, Toba Tek Singh
+                      </a>
                     </div>
                   </div>
                   
@@ -472,7 +479,14 @@ const Navigation = () => {
                     </div>
                     <div>
                       <p className="text-[#d4af37] text-xs font-medium">Location</p>
-                      <p className="text-white text-sm">Rajana Road Near Suzuki Showroom, Toba Tek Singh</p>
+                      <a 
+                        href="https://maps.app.goo.gl/iqZJ83RBWX4ZxC186"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white text-sm hover:text-[#d4af37] transition-colors duration-300"
+                      >
+                        Rajana Road Near Suzuki Showroom, Toba Tek Singh
+                      </a>
                     </div>
           </div>
 
@@ -499,7 +513,7 @@ const Navigation = () => {
                   <a href="https://facebook.com/DewanBanquet" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/5 hover:bg-[#d4af37]/20 border border-white/10 hover:border-[#d4af37]/40 rounded-lg flex items-center justify-center transition-all duration-300 group backdrop-blur-sm">
                     <svg className="w-4 h-4 text-white/60 group-hover:text-[#d4af37] transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                    </svg>
+            </svg>
                   </a>
                 </div>
               </div>

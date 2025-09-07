@@ -104,3 +104,28 @@ h1, h2, h3, h4, h5, h6 {
   width: 300px;
   height: 300px;
 }
+
+/* Testimonials scroll animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.testimonials-circular {
+  animation: scroll 25s linear infinite;
+  will-change: transform;
+}
+
+.testimonials-circular:hover {
+  animation-play-state: paused;
+}
+
+/* Ensure smooth animation */
+.testimonials-circular * {
+  backface-visibility: hidden;
+  perspective: 1000px;
+}

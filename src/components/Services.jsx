@@ -3,10 +3,10 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 // Import local images for services
-import weddingImg from '../assets/Images/IMG-20250905-WA0001.jpg'
-import corporateImg from '../assets/Images/IMG-20250905-WA0003.jpg'
-import privateImg from '../assets/Images/IMG-20250905-WA0004.jpg'
-import specialImg from '../assets/Images/IMG-20250905-WA0005.jpg'
+import weddingImg from '../assets/Images/wedding1.png'
+import corporateImg from '../assets/Images/interior10.jpg'
+import privateImg from '../assets/Images/wedding2.png'
+import specialImg from '../assets/Images/wedding3.png'
 
 const Services = () => {
   const sectionRef = useRef(null)
@@ -24,8 +24,8 @@ const Services = () => {
       image: corporateImg,
     },
     {
-      title: "Private Parties",
-      description: "Celebrate life's special moments with our customizable private party packages in our beautiful venue.",
+      title: "Receptions",
+      description: "Host grand receptions in our luxurious halls with state-of-the-art sound systems, elegant lighting, and world-class catering facilities.",
       image: privateImg,
     },
     {
@@ -62,15 +62,27 @@ const Services = () => {
             }
           }
         )
+
+        // Set initial position for title container (at bottom)
+        const titleContainer = card.querySelector('.title-container')
+        if (titleContainer) {
+          gsap.set(titleContainer, { y: 0 }) // Start at bottom
+        }
       }
     })
   }, [])
 
   const handleCardHover = (index, isHovering) => {
     const card = cardsRef.current[index]
-    if (!card) return
+    const titleContainer = card?.querySelector('.title-container')
+    const titleText = card?.querySelector('.title-text')
+    const topLine = card?.querySelector('.top-line')
+    const bottomLine = card?.querySelector('.bottom-line')
+    
+    if (!card || !titleContainer || !titleText) return
 
     if (isHovering) {
+      // Card hover animation
       gsap.to(card, {
         rotationY: 5,
         rotationX: 5,
@@ -78,11 +90,57 @@ const Services = () => {
         duration: 0.3,
         ease: "power2.out"
       })
+
+      // Title animation - smooth move from bottom to center
+      gsap.to(titleContainer, {
+        y: -90, // Move up to center (half the card height)
+        duration: 1.2,
+        ease: "power2.out"
+      })
+
+      // Lines animation with delay
+      gsap.to([topLine, bottomLine], {
+        opacity: 1,
+        scaleX: 1,
+        duration: 0.5,
+        delay: 0.3,
+        ease: "power2.out",
+        stagger: 0.1
+      })
+
+      // Title text micro animation
+      gsap.to(titleText, {
+        y: -4,
+        duration: 0.5,
+        delay: 0.2,
+        ease: "power2.out"
+      })
+
     } else {
+      // Reset animations
       gsap.to(card, {
         rotationY: 0,
         rotationX: 0,
         scale: 1,
+        duration: 0.3,
+        ease: "power2.out"
+      })
+
+      gsap.to(titleContainer, {
+        y: 0, // Return to bottom position
+        duration: 0.8,
+        ease: "power2.out"
+      })
+
+      gsap.to([topLine, bottomLine], {
+        opacity: 0,
+        scaleX: 0,
+        duration: 0.3,
+        ease: "power2.out"
+      })
+
+      gsap.to(titleText, {
+        y: 0,
         duration: 0.3,
         ease: "power2.out"
       })
@@ -108,7 +166,7 @@ const Services = () => {
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, index) => (
             <div
               key={service.title}
@@ -117,34 +175,31 @@ const Services = () => {
               onMouseLeave={() => handleCardHover(index, false)}
               className="group cursor-pointer"
             >
-              <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 h-full">
-                {/* Image */}
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                  
-                  {/* Icon */}
-                  <div className="absolute top-4 right-4 text-3xl">
-                    {service.icon}
+              <div className="relative h-80 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                {/* Background Image */}
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                
+                {/* Dark Overlay */}
+                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-300"></div>
+                
+                {/* Title - Starts at bottom center, animates to center on hover */}
+                <div className="absolute inset-0 flex items-end justify-center">
+                  <div className="title-container text-center pb-6" style={{ transform: 'translateY(0px)' }}>
+                    {/* Top Line */}
+                    <div className="top-line w-24 h-0.5 bg-white mx-auto mb-4 opacity-0 scale-x-0 origin-center"></div>
+                    
+                    {/* Title */}
+                    <h3 className="title-text text-white text-xl font-semibold px-4">
+                      {service.title}
+                    </h3>
+                    
+                    {/* Bottom Line */}
+                    <div className="bottom-line w-24 h-0.5 bg-white mx-auto mt-4 opacity-0 scale-x-0 origin-center"></div>
                   </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-800 mb-3">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {service.description}
-                  </p>
-                  
-                  <button className="mt-4 text-[#d4af37] font-semibold hover:text-[#b8941f] transition-colors duration-300">
-                    Learn More →
-                  </button>
                 </div>
               </div>
             </div>

@@ -46,20 +46,20 @@ const Footer = () => {
 
   const navigationLinks = [
     { name: 'HOME', href: '#home' },
-    { name: 'VENUE', href: '#venue' },
-    { name: 'MENU', href: '#menu' },
-    { name: 'EVENTS', href: '#events' },
+    { name: 'WEDDINGS', href: '/events#weddings' },
+    { name: 'BIRTHDAY', href: '/events#birthday-parties' },
+    { name: 'CORPORATE EVENTS', href: '/events#corporate-events' },
     { name: 'GALLERY', href: '/gallery' },
     { name: 'ABOUT US', href: '#about' },
     { name: 'CONTACT', href: '#contact' }
   ]
 
   const eventTypes = [
-    { name: 'WEDDINGS', href: '#weddings' },
-    { name: 'BIRTHDAY', href: '#birthday' },
-    { name: 'EVENTS BY DEWAAN', href: '#events' },
-    { name: 'OFF SITE EVENTS', href: '#offsite' },
-    { name: 'CORPORATE EVENTS', href: '#corporate' }
+    { name: 'WEDDINGS', href: '/events#weddings' },
+    { name: 'BIRTHDAY', href: '/events#birthday-parties' },
+    { name: 'RECEPTIONS', href: '/events#receptions' },
+    { name: 'ANNIVERSARIES', href: '/events#anniversaries' },
+    { name: 'CORPORATE EVENTS', href: '/events#corporate-events' }
   ]
 
   const socialLinks = [
@@ -237,7 +237,14 @@ const Footer = () => {
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="text-white/60 text-xs uppercase tracking-wider">Address</p>
-                  <p className="text-white font-medium text-xs sm:text-sm">Rajana Road Near Suzuki Showroom, Toba Tek Singh</p>
+                  <a 
+                    href="https://maps.app.goo.gl/iqZJ83RBWX4ZxC186"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white font-medium text-xs sm:text-sm hover:text-[#d4af37] transition-colors duration-300"
+                  >
+                    Rajana Road Near Suzuki Showroom, Toba Tek Singh
+                  </a>
               </div>
             </div>
           </div>
