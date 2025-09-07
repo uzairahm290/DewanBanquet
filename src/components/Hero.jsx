@@ -302,7 +302,7 @@ const Hero = ({ shouldAnimate = true }) => {
           {/* Main Content - Centered */}
           <div className="relative flex flex-col items-center justify-center text-center space-y-2 sm:space-y-3 md:space-y-4 w-full px-2 sm:px-4">
             {/* Background overlay for better text visibility */}
-            <div className="absolute inset-0 bg-black/10 backdrop-blur-[2px] rounded-lg -m-4"></div>
+            <div className="absolute inset-0 bg-black/5 backdrop-blur-[2px] rounded-lg -m-4 sm:mx-0.5 mx-0.5 md:mx-0.5"></div>
             <div className="relative z-10 flex flex-col items-center justify-center text-center space-y-2 sm:space-y-3 md:space-y-4 w-full px-2 sm:px-4">
             {/* Welcome Text */}
             <h2 
