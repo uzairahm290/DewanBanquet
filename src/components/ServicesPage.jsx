@@ -14,6 +14,7 @@ import wedding3 from '../assets/Images/wedding3.png'
 import wedding4 from '../assets/Images/wedding4.png'
 import wedding5 from '../assets/Images/wedding5.png'
 import corporate1 from '../assets/Images/coporate1.png'
+import interior10 from '../assets/Images/interior10.jpg'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -315,37 +316,37 @@ const ServicesPage = () => {
       number: "01",
       title: "WEDDINGS",
       description: "One of the most special moments for any person is their wedding day. We know how much pressure and stress this may bring for some couples. Therefore, we have come up with the best processes and perfected our system in order to make this process easy and enjoyable. Let us guide you through all of your choices and give you advice along the way. Some of the most unique and unforgettable weddings have taken place at Dewaan Banquet.",
-      image: "/src/assets/Images/wedding1.png"
+      image: wedding1
     },
     {
       number: "02", 
       title: "RECEPTIONS",
       description: "Host grand receptions in our luxurious halls with state-of-the-art sound systems, elegant lighting, and world-class catering facilities. Our spacious reception areas can accommodate intimate gatherings or grand celebrations, ensuring every guest experiences the magic of your special day.",
-      image: "/src/assets/Images/wedding2.png"
+      image: wedding2
     },
     {
       number: "03",
       title: "CORPORATE EVENTS", 
       description: "Professional business events, conferences, and corporate gatherings with modern facilities and technical support. Our versatile spaces are perfect for board meetings, product launches, annual conferences, and team building events with all the amenities your business needs.",
-      image: "/src/assets/Images/interior10.jpg"
+      image: interior10
     },
     {
       number: "04",
       title: "BIRTHDAY PARTIES",
       description: "Celebrate special birthdays with themed decorations, entertainment options, and personalized party planning. From milestone birthdays to children's parties, we create magical experiences that make every birthday celebration unforgettable and unique.",
-      image: "/src/assets/Images/wedding3.png"
+      image: wedding3
     },
     {
       number: "05",
       title: "ANNIVERSARIES",
       description: "Mark milestone anniversaries with romantic settings, elegant dining, and memorable experiences. Whether it's your 25th, 50th, or any special anniversary, we create intimate and romantic atmospheres that celebrate your love story in the most beautiful way.",
-      image: "/src/assets/Images/wedding4.png"
+      image: wedding4
     },
     {
       number: "06", 
       title: "CULTURAL EVENTS",
       description: "Traditional cultural celebrations with authentic decor, traditional cuisine, and cultural entertainment. We honor and celebrate diverse cultural traditions with respect and authenticity, creating meaningful experiences that connect communities and preserve heritage.",
-      image: "/src/assets/Images/wedding5.png"
+      image: wedding5
     }
   ]
 
