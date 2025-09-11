@@ -17,7 +17,6 @@ const Hero = ({ shouldAnimate = true }) => {
   const backgroundRef = useRef(null)
   const videoRef = useRef(null)
   const [showVideo, setShowVideo] = useState(false)
-  const [videoReady, setVideoReady] = useState(false)
 
   useEffect(() => {
     if (!shouldAnimate) return
@@ -33,50 +32,16 @@ const Hero = ({ shouldAnimate = true }) => {
       { 
         opacity: 1,
         filter: 'brightness(1) contrast(1)',
-        duration: 3,
+        duration: 2,
         ease: "power3.inOut"
       },
       0
     )
 
-    // After 4.5 seconds, transition to video smoothly
+    // After image animation completes, transition to video
     tl.call(() => {
-      if (videoReady && videoRef.current) {
-        setShowVideo(true)
-        // Smooth crossfade transition
-        gsap.to(backgroundRef.current, {
-          opacity: 0,
-          duration: 0.8,
-          ease: "power2.inOut"
-        })
-        gsap.fromTo(videoRef.current, {
-          opacity: 0
-        }, {
-          opacity: 1,
-          duration: 0.8,
-          ease: "power2.inOut"
-        })
-      } else {
-        // If video isn't ready, wait a bit more and try again
-        setTimeout(() => {
-          if (videoReady && videoRef.current) {
-            setShowVideo(true)
-            gsap.to(backgroundRef.current, {
-              opacity: 0,
-              duration: 0.8,
-              ease: "power2.inOut"
-            })
-            gsap.fromTo(videoRef.current, {
-              opacity: 0
-            }, {
-              opacity: 1,
-              duration: 0.8,
-              ease: "power2.inOut"
-            })
-          }
-        }, 1000) // Wait 1 more second
-      }
-    }, null, 4.5)
+      setShowVideo(true)
+    }, null, 3)
 
     // Animate top lines with center-out effect
     tl.fromTo(".top-left-line",
@@ -259,37 +224,6 @@ const Hero = ({ shouldAnimate = true }) => {
     )
   }, [shouldAnimate])
 
-  // Video preloading effect
-  useEffect(() => {
-    const video = videoRef.current
-    if (!video) return
-
-    const handleCanPlay = () => {
-      setVideoReady(true)
-    }
-
-    const handleLoadedData = () => {
-      setVideoReady(true)
-    }
-
-    const handleError = () => {
-      console.warn('Video failed to load, will keep showing image')
-    }
-
-    video.addEventListener('canplay', handleCanPlay)
-    video.addEventListener('loadeddata', handleLoadedData)
-    video.addEventListener('error', handleError)
-
-    // Start preloading the video
-    video.load()
-
-    return () => {
-      video.removeEventListener('canplay', handleCanPlay)
-      video.removeEventListener('loadeddata', handleLoadedData)
-      video.removeEventListener('error', handleError)
-    }
-  }, [])
-
   // Star component for rating display
   const Star = ({ filled = true }) => (
     <svg 
@@ -319,25 +253,26 @@ const Hero = ({ shouldAnimate = true }) => {
         />
       </div>
 
-      {/* Background Video - Preloaded and ready for seamless transition */}
-      <div className="absolute inset-0 z-0 overflow-hidden bg-black">
-        <video 
-          ref={videoRef}
-          className="w-full h-full object-cover opacity-0"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          style={{
-            filter: 'brightness(1) contrast(1)',
-            transition: 'opacity 0.8s ease-in-out'
-          }}
-        >
-          <source src={heroVideo} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
+      {/* Background Video - Shows after image animation */}
+      {showVideo && (
+        <div className="absolute inset-0 z-0 overflow-hidden bg-black">
+          <video 
+            ref={videoRef}
+            className="w-full h-full object-cover opacity-100"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            style={{
+              filter: 'brightness(1) contrast(1)'
+            }}
+          >
+            <source src={heroVideo} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      )}
 
       {/* Main Content Container */}
       <div className="absolute inset-0 z-10 flex items-center justify-center w-full px-6 sm:px-6 md:px-8 border-0 outline-none" style={{ border: 'none', outline: 'none' }}>
