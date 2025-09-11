@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Link } from 'react-router-dom'
+import OptimizedImage from './OptimizedImage'
 import logo from '../assets/Images/logo.png'
 
 // Import all gallery images
@@ -335,10 +336,12 @@ const GalleryPage = () => {
                 onMouseLeave={(e) => handleImageHover(e, false)}
               >
                 <div className="relative overflow-hidden rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 hover:border-[#d4af37]/40 transition-all duration-300">
-                  <img
+                  <OptimizedImage
                     src={image.src}
                     alt={image.alt}
                     className="w-full h-64 sm:h-72 object-cover"
+                    threshold={0.1}
+                    rootMargin="50px"
                   />
                   
                   {/* Overlay */}
@@ -391,10 +394,12 @@ const GalleryPage = () => {
               </svg>
             </button>
             
-            <img
+            <OptimizedImage
               src={selectedImage.src}
               alt={selectedImage.alt}
               className="w-full h-auto max-h-[80vh] object-contain rounded-lg"
+              immediate={true}
+              loading="eager"
             />
             
             <div className="absolute bottom-4 left-4 right-4 bg-black/60 backdrop-blur-sm rounded-lg p-4">

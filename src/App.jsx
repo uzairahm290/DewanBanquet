@@ -6,12 +6,34 @@ import Lenis from 'lenis'
 import Preloader from './components/Preloader'
 import ScrollToTop from './components/ScrollToTop'
 import CustomCursor from './components/CustomCursor'
+import PerformanceMonitor from './components/PerformanceMonitor'
 
-// Lazy load pages for better performance
-const HomePage = lazy(() => import('./components/HomePage'))
-const GalleryPage = lazy(() => import('./components/GalleryPage'))
-const ServicesPage = lazy(() => import('./components/ServicesPage'))
-const ErrorPage = lazy(() => import('./components/ErrorPage'))
+// Enhanced lazy loading with retry mechanism and better error handling
+const lazyWithRetry = (importFunc, retries = 3) => {
+  return lazy(() => {
+    return new Promise((resolve, reject) => {
+      const attemptImport = (attempt) => {
+        importFunc()
+          .then(resolve)
+          .catch((error) => {
+            if (attempt < retries) {
+              console.warn(`Lazy loading attempt ${attempt} failed, retrying...`, error)
+              setTimeout(() => attemptImport(attempt + 1), 1000 * attempt)
+            } else {
+              reject(error)
+            }
+          })
+      }
+      attemptImport(1)
+    })
+  })
+}
+
+// Lazy load pages for better performance with retry mechanism
+const HomePage = lazyWithRetry(() => import('./components/HomePage'))
+const GalleryPage = lazyWithRetry(() => import('./components/GalleryPage'))
+const ServicesPage = lazyWithRetry(() => import('./components/ServicesPage'))
+const ErrorPage = lazyWithRetry(() => import('./components/ErrorPage'))
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -54,9 +76,20 @@ function App() {
   return (
     <Router>
       {isLoading && <Preloader onComplete={handlePreloaderComplete} />}
-      <Suspense fallback={<div className="flex items-center justify-center min-h-screen bg-white">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"></div>
-      </div>}>
+      <Suspense fallback={
+        <div className="flex items-center justify-center min-h-screen bg-black">
+          <div className="text-center">
+            <div className="relative">
+              <div className="animate-spin rounded-full h-16 w-16 border-4 border-[#d4af37]/20 border-t-[#d4af37] mx-auto mb-4"></div>
+              <div className="absolute inset-0 animate-pulse">
+                <div className="rounded-full h-16 w-16 bg-[#d4af37]/10 mx-auto"></div>
+              </div>
+            </div>
+            <p className="text-white/80 text-lg font-medium">Loading...</p>
+            <p className="text-white/60 text-sm mt-2">Preparing your experience</p>
+          </div>
+        </div>
+      }>
         <Routes>
           <Route path="/" element={<HomePage shouldAnimate={!isLoading} />} />
           <Route path="/gallery" element={<GalleryPage />} />
@@ -66,6 +99,7 @@ function App() {
       </Suspense>
       <ScrollToTop />
       <CustomCursor />
+      <PerformanceMonitor enabled={process.env.NODE_ENV === 'development'} />
     </Router>
   )
 }
