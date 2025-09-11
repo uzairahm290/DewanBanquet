@@ -61,7 +61,15 @@ const Gallery = () => {
   ]
 
   useEffect(() => {
-    // Register ScrollTrigger plugin
+    // Check if mobile device
+    const isMobile = window.innerWidth < 768
+    
+    if (isMobile) {
+      // No scroll animations on mobile for smoother experience
+      return
+    }
+
+    // Register ScrollTrigger plugin (desktop only)
     gsap.registerPlugin(ScrollTrigger)
 
     // Animate section header
