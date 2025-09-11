@@ -1,7 +1,8 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import weddingImg from '../assets/Images/IMG-20250905-WA0001.jpg'
+import OptimizedImage from './OptimizedImage'
+import aboutImg from '../assets/Images/about.jpg'
 
 const About = () => {
   const sectionRef = useRef(null)
@@ -66,10 +67,12 @@ const About = () => {
           {/* Image */}
           <div ref={imageRef} className="relative">
             <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-              <img
-                src= {weddingImg}
+              <OptimizedImage
+                src={aboutImg}
                 alt="Dewaan Banquet Interior"
                 className="w-full h-[500px] object-cover"
+                threshold={0.2}
+                rootMargin="100px"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
             </div>
