@@ -17,7 +17,7 @@ const Hero = ({ shouldAnimate = true }) => {
   const backgroundRef = useRef(null)
   const videoRef = useRef(null)
   const [showVideo, setShowVideo] = useState(false)
-  const [videoLoaded, setVideoLoaded] = useState(false)
+  const [videoReady, setVideoReady] = useState(false)
 
   useEffect(() => {
     if (!shouldAnimate) return
@@ -33,17 +33,17 @@ const Hero = ({ shouldAnimate = true }) => {
       { 
         opacity: 1,
         filter: 'brightness(1) contrast(1)',
-        duration: 2.5,
+        duration: 3,
         ease: "power3.inOut"
       },
       0
     )
 
-    // Transition to video much faster - after image animation
+    // After 4.5 seconds, transition to video smoothly
     tl.call(() => {
-      if (videoLoaded && videoRef.current) {
+      if (videoReady && videoRef.current) {
         setShowVideo(true)
-        // Fade out image and fade in video smoothly
+        // Smooth crossfade transition
         gsap.to(backgroundRef.current, {
           opacity: 0,
           duration: 0.8,
@@ -57,10 +57,26 @@ const Hero = ({ shouldAnimate = true }) => {
           ease: "power2.inOut"
         })
       } else {
-        // Fallback: keep image visible if video isn't ready
-        console.log('Video not ready, keeping image visible')
+        // If video isn't ready, wait a bit more and try again
+        setTimeout(() => {
+          if (videoReady && videoRef.current) {
+            setShowVideo(true)
+            gsap.to(backgroundRef.current, {
+              opacity: 0,
+              duration: 0.8,
+              ease: "power2.inOut"
+            })
+            gsap.fromTo(videoRef.current, {
+              opacity: 0
+            }, {
+              opacity: 1,
+              duration: 0.8,
+              ease: "power2.inOut"
+            })
+          }
+        }, 1000) // Wait 1 more second
       }
-    }, null, 2.8)
+    }, null, 4.5)
 
     // Animate top lines with center-out effect
     tl.fromTo(".top-left-line",
@@ -243,56 +259,36 @@ const Hero = ({ shouldAnimate = true }) => {
     )
   }, [shouldAnimate])
 
-  // Video preloading and loading handlers
+  // Video preloading effect
   useEffect(() => {
     const video = videoRef.current
     if (!video) return
 
-    const handleLoadedData = () => {
-      setVideoLoaded(true)
-      // If video loads quickly, we can transition earlier
-      if (shouldAnimate) {
-        setTimeout(() => {
-          if (videoLoaded) {
-            setShowVideo(true)
-            gsap.to(backgroundRef.current, {
-              opacity: 0,
-              duration: 0.8,
-              ease: "power2.inOut"
-            })
-            gsap.fromTo(videoRef.current, {
-              opacity: 0
-            }, {
-              opacity: 1,
-              duration: 0.8,
-              ease: "power2.inOut"
-            })
-          }
-        }, 2000) // Transition after 2 seconds if video is ready
-      }
+    const handleCanPlay = () => {
+      setVideoReady(true)
     }
 
-    const handleCanPlay = () => {
-      setVideoLoaded(true)
+    const handleLoadedData = () => {
+      setVideoReady(true)
     }
 
     const handleError = () => {
-      console.warn('Video failed to load, falling back to image')
+      console.warn('Video failed to load, will keep showing image')
     }
 
-    video.addEventListener('loadeddata', handleLoadedData)
     video.addEventListener('canplay', handleCanPlay)
+    video.addEventListener('loadeddata', handleLoadedData)
     video.addEventListener('error', handleError)
 
-    // Preload the video immediately
+    // Start preloading the video
     video.load()
 
     return () => {
-      video.removeEventListener('loadeddata', handleLoadedData)
       video.removeEventListener('canplay', handleCanPlay)
+      video.removeEventListener('loadeddata', handleLoadedData)
       video.removeEventListener('error', handleError)
     }
-  }, [shouldAnimate, videoLoaded])
+  }, [])
 
   // Star component for rating display
   const Star = ({ filled = true }) => (

@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Link } from 'react-router-dom'
-import OptimizedImage from './OptimizedImage'
 
 // Import local images
 import img1 from '../assets/Images/interior1.jpg'
@@ -202,13 +201,12 @@ const Gallery = () => {
               onMouseLeave={() => handleImageHover(index, false)}
             >
               <div className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 aspect-square">
-                <OptimizedImage
+                <img
                   ref={el => imagesRef.current[index] = el}
                   src={image.src}
                   alt={image.alt}
                   className="w-full h-full object-cover"
-                  threshold={0.1}
-                  rootMargin="50px"
+                  loading="lazy"
                 />
                 
                 {/* Gold overlay on hover */}
@@ -260,12 +258,11 @@ const Gallery = () => {
                         key={`${category}-${index}`}
                         className="relative w-full h-40 rounded-xl overflow-hidden shadow-lg"
                       >
-                        <OptimizedImage
+                        <img
                           src={image.src}
                           alt={image.alt}
                           className="w-full h-full object-cover"
-                          threshold={0.1}
-                          rootMargin="50px"
+                          loading="lazy"
                         />
                       </div>
                     ))}

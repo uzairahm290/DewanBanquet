@@ -6,7 +6,6 @@ import Lenis from 'lenis'
 import Preloader from './components/Preloader'
 import ScrollToTop from './components/ScrollToTop'
 import CustomCursor from './components/CustomCursor'
-import PerformanceMonitor from './components/PerformanceMonitor'
 
 // Enhanced lazy loading with retry mechanism and better error handling
 const lazyWithRetry = (importFunc, retries = 3) => {
@@ -99,7 +98,6 @@ function App() {
       </Suspense>
       <ScrollToTop />
       <CustomCursor />
-      <PerformanceMonitor enabled={process.env.NODE_ENV === 'development'} />
     </Router>
   )
 }

@@ -362,13 +362,12 @@ const ServicesPage = () => {
       >
         {/* Background Image Carousel */}
         <div className="absolute inset-0 z-0 overflow-hidden bg-white">
-          <OptimizedImage
+          <img
             ref={backgroundRef}
             src={carouselImages[currentImageIndex]}
             alt="Event showcase"
             className="w-full h-full object-cover transition-all duration-1000 ease-in-out"
             style={{ filter: 'brightness(0)' }}
-            immediate={true}
             loading="eager"
           />
         </div>
@@ -531,12 +530,11 @@ const ServicesPage = () => {
                 <div className={`${index % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}`}>
                   <div className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-r from-[#d4af37]/20 to-transparent rounded-2xl transform rotate-3 group-hover:rotate-6 transition-transform duration-300"></div>
-                    <OptimizedImage
+                    <img
                       src={event.image}
                       alt={event.title}
                       className="relative w-full h-80 object-cover rounded-2xl shadow-2xl group-hover:scale-105 transition-transform duration-300"
-                      threshold={0.2}
-                      rootMargin="100px"
+                      loading="lazy"
                     />
                   </div>
                 </div>
