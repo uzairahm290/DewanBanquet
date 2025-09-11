@@ -28,10 +28,10 @@ const Navigation = () => {
   }, [])
 
   const navItems = [
-    { name: 'HOME', href: '#home' },
-    { name: 'EVENTS', href: '#events' },
+    { name: 'HOME', href: '/' },
+    { name: 'EVENTS', href: '/events' },
     { name: 'GALLERY', href: '/gallery' },
-    { name: 'ABOUT US', href: '#about' }
+    { name: 'ABOUT US', href: '/#about' }
   ]
 
   const toggleMenu = () => {
