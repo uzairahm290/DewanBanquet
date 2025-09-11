@@ -9,15 +9,7 @@ const About = () => {
   const contentRef = useRef(null)
 
   useEffect(() => {
-    // Check if mobile device
-    const isMobile = window.innerWidth < 768
-    
-    if (isMobile) {
-      // No scroll animations on mobile for smoother experience
-      return
-    }
-
-    // Parallax effect for image (desktop only)
+    // Parallax effect for image
     gsap.to(imageRef.current, {
       yPercent: -30,
       ease: "none",
@@ -29,7 +21,7 @@ const About = () => {
       }
     })
 
-    // Animate content on scroll (desktop only)
+    // Animate content on scroll
     gsap.fromTo(contentRef.current,
       { x: 100, opacity: 0 },
       {
